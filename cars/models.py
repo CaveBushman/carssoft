@@ -16,8 +16,8 @@ class Car(models.Model):
     stk_valid_to = models.DateField(null=True, verbose_name="STK platná do:")
 
     first_used_on_year = models.IntegerField(null=True, verbose_name="Rok uvedení do provozu")
-        
-    rent_to = models.ForeignKey(Driver, on_delete=models.SET_NULL, null=True)
+
+    equipment = models.ManyToManyField('Equipment', blank=True, null=True)
 
     created = models.DateField(auto_now_add=True, blank=True)
     updated = models.DateField(auto_now=True, blank=True)
@@ -25,3 +25,9 @@ class Car(models.Model):
     def __str__(self):
         return f"{self.plate}, {self.make}"
         
+
+class Equipment(models.Model):
+    title = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title

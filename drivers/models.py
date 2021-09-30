@@ -18,6 +18,7 @@ class Driver (models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField
+    personal_identification_number = models.IntegerField()
 
     image = models.ImageField(null=True, blank=True, upload_to = "static/images/drivers")
 
